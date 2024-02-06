@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971.MVVM.Views.ViewCourseInfo"
+             Title="ViewCourseInfo">
+    <ScrollView  Margin="10">
+        <VerticalStackLayout >
+            <Frame BackgroundColor="{StaticResource Primary}">
+                <Label Text="Course Information" TextColor="White"/>
+            </Frame>
+            <Frame Margin="10" BorderColor="{StaticResource Primary}">
+                <Grid ColumnDefinitions=".5*,.5*" RowDefinitions="Auto,Auto,Auto, Auto">
+                    <Label Padding="10" Grid.Column="0" Text="Course Name:"/>
+                    <Label Padding="10" Text="{Binding CourseName}" Grid.Column="1" Grid.Row="0"/>
+                    <Label Padding="10" Grid.Column="0" Grid.Row="1" Text="Start Date:"/>
+                    <DatePicker Date="{Binding CourseStartDate}" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+                    <Label Padding="10" Grid.Column="0" Grid.Row="2" Text="End Date:"/>
+                    <DatePicker Date="{Binding CourseEndDate}" Grid.Column="1" Grid.Row="2" IsEnabled="False"/>
+                    <Label Padding="10" Grid.Column="0" Grid.Row="3" Text="Course Status:"/>
+                    <Picker x:Name="courseStatus" Title="Select a Status" Grid.Column="1" Grid.Row="3" SelectedItem="{Binding CourseStatus}" IsEnabled="False">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Progress</x:String>
+                                <x:String>Completed</x:String>
+                                <x:String>Dropped</x:String>
+                                <x:String>Plan to Take</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </Frame>
+            <Grid ColumnDefinitions="Auto,Auto">
+                <Label Padding="10" Grid.Column="0" Text="Set Alert for Start Date:" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Large"/>
+                <Switch Grid.Column="1" x:Name="start"  IsToggled="{Binding StartCourseAlert}" IsEnabled="False"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="Auto,Auto">
+                <Label Padding="10" Grid.Column="0" Text="Set Alert for End Date:" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Large"/>
+                <Switch Grid.Column="1" x:Name="end"  IsToggled="{Binding EndCourseAlert}" IsEnabled="False"/>
+            </Grid>
+
+            <Frame BackgroundColor="{StaticResource Primary}">
+                <Label Text="Instructor" TextColor="White"/>
+            </Frame>
+            <Frame Margin="10" BorderColor="{StaticResource Primary}">
+                <Grid ColumnDefinitions=".5*,.5*" RowDefinitions="Auto,Auto,Auto">
+                    <Label Padding="10" Grid.Column="0" Text="Instructor Name:"/>
+                    <Label Padding="10" Text="{Binding InstructorName}" Grid.Column="1" Grid.Row="0"/>
+                    <Label Padding="10" Grid.Column="0" Grid.Row="1" Text="Phone Number:"/>
+                    <Label Padding="10" Text="{Binding InstructorPhoneNumber}" Grid.Column="1" Grid.Row="1"/>
+                    <Label Padding="10" Grid.Column="0" Grid.Row="2" Text="Email:"/>
+                    <Label Padding="10" Text="{Binding InstructorEmail}" Grid.Column="1" Grid.Row="2"/>
+                </Grid>
+            </Frame>
+
+            
+            <Frame BackgroundColor="{StaticResource Primary}">
+                <Label Text="Performance Assessment" TextColor="White"/>
+            </Frame>
+            <Frame Margin="10" BorderColor="{StaticResource Primary}">
+                <Grid  ColumnDefinitions=".5*,.5*" RowDefinitions="Auto,Auto, Auto">
+                    <Label Padding="10" Grid.Column="0" Text="Assessment Name:"/>
+                    <Label Padding="10" Text="{Binding PerformanceName}" Grid.Column="1" Grid.Row="0"/>
+                    <Label Padding="10" Margin="15" Grid.Column="0" Grid.Row="1" Text="Assessment Start Date:"/>
+                    <DatePicker Margin="20" Date="{Binding PerformanceDue}" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+                    <Label Padding="10" Margin="15" Grid.Column="0" Grid.Row="2"  Text="Set Alert:"/>
+                    <Switch Grid.Row="2"  IsToggled="{Binding PerformanceAlert}" IsEnabled="False"/>
+                </Grid>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource Primary}">
+                <Label Text="Objective Assessment" TextColor="White"/>
+            </Frame>
+            <Frame Margin="10" BorderColor="{StaticResource Primary}">
+                <Grid ColumnDefinitions=".5*,.5*" RowDefinitions="Auto,Auto, Auto">
+                    <Label Padding="10" Grid.Column="0" Text="Assessment Name:"/>
+                    <Label Padding="10" Text="{Binding ObjectiveName}" Grid.Column="1" Grid.Row="0"/>
+                    <Label Padding="10" Margin="15" Grid.Column="0" Grid.Row="1" Text="Assessment Start Date:"/>
+                    <DatePicker Margin="20" Date="{Binding ObjectiveDue}" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+                    <Label Padding="10" Margin="15" Grid.Column="0" Grid.Row="2"  Text="Set Alert:"/>
+                    <Switch Grid.Row="2"  IsToggled="{Binding ObjectiveAlert}" IsEnabled="False"/>
+                </Grid>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource Primary}">
+                <Label Text="Optional Notes" TextColor="White"/>
+            </Frame>
+            <Frame Margin="10" BorderColor="{StaticResource Primary}">
+                <Grid ColumnDefinitions=".75*,.25*" RowDefinitions="Auto">
+                    <Label Text="{Binding OptionalNotes}" Grid.Column="0" Grid.Row="0"/>
+                    <Button Text="Share" Grid.Column="1" Clicked="Button_Clicked_1"/>
+                </Grid>
+            </Frame>
+            <Button Margin="10" Text="Edit" Clicked="Button_Clicked" BackgroundColor="Black"/>
+
+        </VerticalStackLayout>
+
+
+
+
+    </ScrollView>
+</ContentPage>
